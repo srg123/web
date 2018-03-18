@@ -1,0 +1,108 @@
+
+/*普通公共样式初始化*/
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin:0; padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset, iframe, img {
+    border:0;
+}
+address, caption, cite, code, dfn, em, th, var,i,b{
+    font-style:normal;
+    font-weight:normal;
+}
+ul,dl,ol,li{
+    list-style:none;
+}
+caption, th {
+    text-align:left;
+}
+
+body, button, input, select, textarea {
+    font-family:Microsoft YaHei,\5b8b\4f53, Arial, Verdana;
+    font-size:12px;
+}
+/*clear float*/
+.clearboth {
+    clear:both;
+    font-size:1px;
+    line-height:1px;
+    height:1px;
+}
+/* Clear Fix */
+.clearfix:after {
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+.clearfix {
+    display:inline-block;
+}
+/* Hide from IE Mac \*/
+.clearfix {
+    display:block;
+}
+/* End hide from IE Mac */
+/* end of clearfix */
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{
+    display:block
+}
+/* general class */
+/*float*/
+.fl {
+    float:left;
+    display:inline;
+}
+.fr {
+    float:right;
+    display:inline;
+}
+
+/*scrollbar*/
+.auto {
+    overflow: auto;
+    overflow-x: hidden;
+}
+.auto::-webkit-scrollbar-track-piece{
+    background-color:#c6c6c6;/*滚动条的背景颜色*/
+    -webkit-border-radius:0;/*滚动条的圆角宽度*/
+}
+.auto::-webkit-scrollbar{
+    width:6px;/*滚动条的宽度*/
+    height:8px;/*滚动条的高度*/
+    background-color:#2f2f2f;
+}
+.auto::-webkit-scrollbar-thumb:vertical{/*垂直滚动条的样式*/
+    height:18px;
+    background-color:#2f2f2f;
+    -webkit-border-radius:0;
+    outline:none;
+    outline-offset:0px;
+    border:none;
+}
+.auto::-webkit-scrollbar-thumb:hover{/*滚动条的hover样式*/
+    height:18px;
+    background-color:#2f2f2f;
+    -webkit-border-radius:0;
+}
+
+/*display*/
+.block{display:block;}
+.none{display:none;}
+.hidden{ overflow:hidden;}
+
+
+/*link*/
+a {text-decoration:none; color:#666666;}
+a:hover{color:#666666;}
+a{outline:none;}
+
+
+
