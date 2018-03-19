@@ -1,0 +1,287 @@
+<!--<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>这是中间3D端</title>
+	<link rel="stylesheet" href="../public/css/style2.css"/>
+	<link rel="stylesheet" href="css/index2.css"/>
+	<script src="../public/libs/jquery/jquery-2.1.1.min.js"></script>
+	<script src="../public/libs/socket.io/socket.io.js"></script>
+	<script src="../public/config/config.js"></script>
+	<script>
+
+	</script>
+</head>
+<body onload="Tools.fitScreen(1920,1080);">
+<!--<body>-->
+
+<div class="document">
+	<!--页面头部-->
+	<div class="header">
+		<h1 class="logo">
+			<a href="#"><img src="./img/system-icon.png" alt=""></a>
+		</h1>
+		<div class="title">仿真控制系统</div>
+		<div class="topNav"></div>
+	</div>
+
+	<!--页面主体-->
+	<div class="ceil-box">
+		<!-- 控制系统左侧 -->
+		<div class="left-ceil">
+			<!-- 视角和报文模式控制 -->
+			<div class="top-ceil">
+				<!-- 视角控制 -->
+				<div class="view-control">
+					<div class="ceil-title">
+						<div class="txt">视角控制</div>
+						<div class="ceil-title-bg"></div>
+					</div>
+					<ul class="control-button-box" id="camera_control" data-camera_id="CameraID" data-plane_id="123456" data-type="" >
+						<li class="notclick default" data-type="0">
+							<div class="icon"></div>
+							<span>舱内视角</span>
+						</li>
+						<li class="notclick selected" data-type="1">
+							<div class="icon"></div>
+							<span>跟随视角</span>
+						</li>
+						<li class="notclick default" data-type="2">
+							<div class="icon"></div>
+							<span>自定义视角</span>
+						</li>
+					</ul>
+				</div>
+				<!-- 报文模式控制 -->
+				<div class="message-control">
+					<div class="ceil-title">
+						<div class="txt">报文模式控制</div>
+						<div class="ceil-title-bg"></div>
+					</div>
+					<ul class="control-button-box">
+						<li id="control_Modular02_display2" data-type="1" class="">
+							<div class="icon"></div>
+							<span>明文模式</span>
+						</li>
+						<li id="control_Modular02_display1" data-type="1" class="selected">
+							<div class="icon"></div>
+							<span>报文模式</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 仿真单元状态 -->
+			<div class="middle-ceil">
+				<div class="ceil-title">
+					<div class="txt">仿真单元状态</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<ul class="util-box util-control-box util-button-box">
+					<li class="selected" data-mod_name="screenGps">数据引擎-GPS卫星</li>
+					<li class="default" data-mod_name="screenCpdlc">大屏-CPDLC</li>
+					<li class="default" data-mod_name="screenFly">大屏-起飞机场</li>
+					<li class="default" data-mod_name="screenTitle">大屏-标题信息</li>
+					<li class="default" data-mod_name="screenThree">大屏-三维视景</li>
+					<li class="default" data-mod_name="screenFplan">大屏-飞行剖面</li>
+					<li class="default" data-mod_name="screenDown">大屏-降落机场</li>
+					<li>
+						<div id="control_front " data-type="1" class="notclick ng"></div>
+						<div id="control_behind " data-type="1" class="notclick ng active"></div>
+					</li>
+				</ul>
+			</div>
+			<!-- 突发状况控制 -->
+			<div class="bottom-ceil">
+				<div class="ceil-title">
+					<div class="txt">突发状况控制</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<img src="./img/suddenly.png" alt="" class="suddenly">
+			</div>
+		</div>
+		<!-- 控制系统右侧 -->
+		<div class="right-ceil">
+			<!-- 天气控制 -->
+			<div class="weater-ceil">
+				<div class="ceil-title">
+					<div class="txt">天气控制</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<ul class="control-button-box weather_window_but" id="weather_control" data-c3d_id="WeatherID">
+					<li class="notclick selected wspan" data-type="0">
+						<div class="icon"></div>
+						<span>晴天</span>
+					</li>
+					<li class="notclick default wspan" data-type="1">
+						<div class="icon"></div>
+						<span>多云</span>
+					</li>
+					<li class="notclick default wspan" data-type="2">
+						<div class="icon"></div>
+						<span>雾天</span>
+					</li>
+					<li class="notclick default wspan" data-type="3">
+						<div class="icon"></div>
+						<span>下雪</span>
+					</li>
+					<li class="notclick default wspan" data-type="4">
+						<div class="icon"></div>
+						<span>下雨</span>
+					</li>
+				</ul>
+			</div>
+			<!-- 仿真特效控制 -->
+			<div class="affect-ceil">
+				<div class="ceil-title">
+					<div class="txt">仿真特效控制</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<ul class="util-box util-affect-box util-button-box"  id="special_effects_option"  data-ffects_id="EffectsID" data-plane_id="156" data-type="">
+					<li id="control_ghhxlj_change" data-type="1" class="notclick defaults">规划滑行路径</li>
+					<li id="control_zdyd_change" data-type="2" class="notclick selected">自动引导</li>
+					<li id="control_rqjc_change" data-type="3" class="notclick defaults">跑道入侵检测</li>
+					<li id="control_guide_change" data-type="4" class="notclick defaults">航路</li>
+					<li id="control_hlkz_change" data-type="5" class="notclick defaults">航路控制点</li>
+					<li>
+						<div></div>
+						<div class="active"></div>
+					</li>
+				</ul>
+			</div>
+			<!-- 仿真时间控制 -->
+			<div class="time-ceil">
+				<div class="ceil-title">
+					<div class="txt">仿真时间控制</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<ul class="simulation_time_setting">
+					<li>
+						<span><input id="simulate-year" class=" com cn1" placeholder=""  /><span class="cn_border_com">年</span></span>
+					</li>
+					<li>
+						<span ><input id="simulate-month" class="com cn1" placeholder="" /><span class="cn_border_com">月</span></span>
+					</li>
+					<li>
+						<span><input id="simulate-day" class="simulate-day com cn1" placeholder="" /><span class="cn_border_com">日</span></span>
+					</li>
+					<li>
+						<span><input id="simulate-hours" class="simulate-hours com cn1" placeholder="" /><span class="cn_border_com">时</span></span>
+					</li>
+					<li>
+						<span><input id="simulate-minutes" class="simulate-minutes com cn1" placeholder="" /><span class="cn_border_com">分</span></span>
+					</li>
+					<li>
+						<span><input id="simulate-second" class="simulate-second com cn1" placeholder="" /><span class="cn_border_com">秒</span></span>
+					</li>
+					<button id="timeEnter" class="submit">确定</button>
+				</ul>
+				<div class="time-axis">
+					<div class="box">
+						<div id="bg">
+							<div class="wrap_point">
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+								<span class="circle"></span>
+							</div>
+							<div class="process-bar" id="bgcolor"></div>
+						</div>
+						<div id="bt"></div>
+						<!--<ol>
+							<li>00:00</li>
+							<li>00:20</li>
+							<li>00:30</li>
+							<li>00:35</li>
+							<li>00:40</li>
+							<li>01:20</li>
+							<li>01:50</li>
+							<li>02:20</li>
+							<li>02:40</li>
+							<li>03:00</li>
+						</ol>-->
+					</div>
+					<div class="time-control-button-box">
+						<div class="left-control">
+							<div class="play-btn">
+								<img src="./img/play-btn.png" alt="">
+								<span>播放</span>
+							</div>
+							<div class="play-btn">
+								<img src="./img/pause-btn.png" alt="">
+								<span>暂停</span>
+							</div>
+							<div class="play-btn">
+								<img src="./img/stop-play-btn.png" alt="">
+								<span>停止</span>
+							</div>
+						</div>
+						<div class="right-control">
+							<span>倍速</span>
+							<div class="range-box">
+								<ul>
+									<li><span>0.2</span></li>
+									<li><span>0.5</span></li>
+									<li><span>&nbsp;&nbsp;1</span></li>
+									<li><span>&nbsp;&nbsp;2</span></li>
+									<li><span>&nbsp;&nbsp;4</span></li>
+									<li><span>&nbsp;&nbsp;8</span><span>16</span></li>
+								</ul>
+								<img src="./img/range-btn.png" alt="" class="range-btn" draggable="false">
+							</div>
+							<span>2x</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 布局控制 -->
+			<div class="layout-ceil">
+				<div class="ceil-title">
+					<div class="txt">布局控制</div>
+					<div class="ceil-title-bg"></div>
+				</div>
+				<div class="layout-title-button">
+					<ul class="control-button-layout" id="layout_control" data-layout_id="LayoutID" data-plane_id="123456" data-type="">
+						<li class="notclick selected" data-type="0">
+							<span>ATM1</span>
+						</li>
+						<li class="notclick default" data-type="1">
+							<span>ATM2</span>
+						</li>
+						<li class="notclick default" data-type="2">
+							<span>FMS1</span>
+						</li>
+						<li class="notclick default" data-type="3">
+							<span>FMS2</span>
+						</li>
+						<li class="notclick default" data-type="4">
+							<span>三维视景</span>
+						</li>
+					</ul>
+					<ol>
+						<li class="active">ATM1</li>
+						<li>ATM2</li>
+						<li>ATM3</li>
+						<li>ATM4</li>
+						<li>ATM5</li>
+						<li>ATM6</li>
+						<li>FMS</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+</body>
+<script src="../public/tools.js"></script>
+<script src="js/index2.js"></script>
+</html>
