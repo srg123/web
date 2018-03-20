@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body {
+	font-size:12px;
+}
+a {
+	text-decoration:none;
+}
+.scroll {
+	width:960px;
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	background:#F1EEEB;
+}
+.picbox {
+	width:928px;
+	height:290px;
+	background:#fff;
+	border:1px solid #DED7D1;
+	overflow:hidden;
+	position:relative;
+	margin:15px;
+}
+.picbox ul {
+	height:285px;
+	padding-top:5px;
+}
+.piclist {
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.piclist li.goodlist {
+	width:221px;
+	margin:10px 0;
+	padding:0px 5px;
+	border-right:1px dotted #DED7D1;
+	margin-right:-1px;
+	float:left;
+}
+.piclist li.goodlist img {
+	width:75px;
+	height:120px;
+}
+.swaplist {
+	position:absolute;
+	left:-3000px;
+	top:0px;
+}
+.og_prev, .og_next {
+	width:30px;
+	height:60px;
+	background:url(../images/btn.png) no-repeat;
+	position:absolute;
+	top:117px;
+	z-index:99;
+	cursor:pointer;
+}
+.og_prev {
+	background-position:0 0;
+	left:0px;
+}
+.og_prev:hover {
+	background-position:0 -60px;
+}
+.og_next {
+	background-position:-30px 0;
+	right:0px;
+}
+.og_next:hover {
+	background-position:-30px -60px;
+}
+.goodlist img.pics {
+	width:85px;
+	height:135px;
+	float:left;
+	background:#fff url(http://www.lanrenzhijia.com/demo/images/loading.gif) center center no-repeat;
+}
+.goodlist dl {
+	float:right;
+	width:130px;
+	overflow:hidden;
+}
+.goodlist dl dt {
+}
+.goodlist dl dt a.title {
+	width:100%;
+	height:22px;
+	line-height:22px;
+	display:block;
+	color:#363636;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+.goodlist dl dt span.en {
+	width:100%;
+	height:22px;
+	line-height:22px;
+	display:block;
+	color:#666;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+.goodlist dl dt span.change-price {
+	font-weight:bold;
+	color:#D63C3C;
+	padding-right:5px;
+}
+.goodlist dl dt span.max-price {
+	color:#999;
+	text-decoration:line-through;
+}
+.goodlist dl dt a.exchange {
+	font-size:12px;
+	padding:4px 10px;
+	text-align:center;
+#padding-top:6px;
+#padding-bottom:2px;
+	color:#fff;
+	display:none;
+	text-decoration:none;
+	background:#C75151;
+	float:left;
+	border-radius:2px;
+}
+.goodlist dl dt a.exchange:hover {
+	background:#973434;
+}
+.goodlist dl dt p {
+	padding:5px 0;
+}
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
