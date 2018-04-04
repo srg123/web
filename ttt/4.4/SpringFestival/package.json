@@ -1,0 +1,14 @@
+{
+  "name": "minhang",
+  "version": "1.0.1",
+  "author": "www.zoolon.com.cn",
+  "description": "ExbControl by zoolon",
+  "main": "./bin/Main.js",
+  "scripts": {
+    "package": "electron-packager ./ SpringFestival --out=../Release --win  --electron-version 1.4.13 --ignore=test  --arch=x64  --overwrite --icon=./zoolon.ico",
+    "package-Linux": "electron-packager ./ TestElectronInLinux --out=../Release --platform=linux  --asar --electron-version 1.8.1 --ignore=test  --arch=x64  --overwrite --icon=./zoolon.ico",
+    "run": "electron ./ -dev 1"
+  },
+  "dependencies": {
+  }
+}
