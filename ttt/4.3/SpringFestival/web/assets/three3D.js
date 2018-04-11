@@ -42,9 +42,9 @@ function init() {
     }*/
        console.log(canvas);
 
-   // html2canvas(canvas).then(function(canvas) {
+    html2canvas(canvas).then(function(canvas) {
 
-      /*  //取得图像数据的URL
+        //取得图像数据的URL
         var imgURL = canvas.toDataURL("image/png");
 
         //显示图像
@@ -52,9 +52,9 @@ function init() {
         image.src = imgURL;
         //document.body.appendChild(image);
        // image.width =2048;
-       // image.height = 1024;*/
+       // image.height = 1024;
 
-     /*   textureMap = new THREE.CanvasTexture(canvas);
+        textureMap = new THREE.CanvasTexture(canvas);
         //textureMap.repeat.set( 1000, 1000 );
         textureMap.wrapS = THREE.RepeatWrapping;
         textureMap.wrapT = THREE.RepeatWrapping;
@@ -65,10 +65,8 @@ function init() {
 
 
         var mesh = new THREE.Mesh( geometry, material );
-        group.add( mesh );*/
- //   });
-
-
+        group.add( mesh );
+   });
 
     // earth
 
